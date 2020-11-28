@@ -48,7 +48,7 @@ file.w <- round((2 * (extE.TB-extW.TB)), 2)
 file.h <- round((2 * (extN.TB-extS.TB)), 2) - 0.6
     # export to file linked to .svg 
 out.folder <- "~/RND/Turkana/maps/workingmaps/images/"
-ggsave(file=paste(out.folder, "TB_regional_sites.tiff"), plot=map.Turkana, 
+ggsave(file=paste(out.folder, "TB_regional_sites.tiff", sep=""), plot=map.Turkana, 
        device="tiff", width=file.w, height=file.h, dpi="retina")
 
 
@@ -79,5 +79,5 @@ plot(map.EAfrica)
 file.w <- 5
 file.h <- 5
     # export to file linked to .svg 
-ggsave(file=paste(out.folder, "EA_TBbox_capitals.tiff"), plot=map.EAfrica, 
+ggsave(file=paste(out.folder, "EA_TBbox_capitals.tiff", sep=""), plot=map.EAfrica, 
        device="tiff", width=file.w, height=file.h, dpi="retina")
