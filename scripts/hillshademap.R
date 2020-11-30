@@ -2,8 +2,9 @@
 
 ### Libraries and  directory
 pacman::p_load(dplyr, raster, rgdal, rnaturalearth, ggplot2, ggthemes, ggspatial)
-setwd("~/RND/Turkana/maps/workingmaps/") #edit as required; .Rdata is stored here
 
+setwd("~/RND/Turkana/maps/workingmaps/") 
+  # edit as required; .Rdata is stored here
 
 ### Small Turkana map centered on lake
 extN.TB <- 5
@@ -34,7 +35,7 @@ hill <- hillShade(slope, aspect, angle = 45, direction = 300)
 
 color.grayscale <- colorRampPalette(c("white", "black"))
 plot(hill, col=rev(color.grayscale(100)))
-# quick plot of hillshade to test angles 
+  # quick plot of hillshade to test angles 
 
 ### Compress and convert 
 hill.shrink <- aggregate(hill, fact=4)
@@ -52,7 +53,7 @@ crop.rivers <- rivers %>% filter(long < 36.5)
   # Africa Rivers. (2014). World Agroforestry Centre. Retrieved from http://landscapeportal.org/layers/geonode:africa_rivers_1
   # crop removes river flowing into Chew Bahir 
 Kerio <- readRDS("data/KerioRiver.Rdata")
-  # Freehand .kml from Google Earth traced path 
+  # freehand .kml from Google Earth traced path 
 
 borders.africa <- ne_countries(continent='africa', returnclass="sf")
 lakes <- ne_download(scale=10, type="lakes", category="physical", returnclass="sf")

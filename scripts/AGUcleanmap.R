@@ -1,3 +1,5 @@
+# A script to create site and context maps for AGU 2020 (no hillshade)
+
 pacman::p_load(dplyr, raster, rgdal, rnaturalearth, ggplot2, ggthemes, ggspatial)
 
 ### Add sites and data 
@@ -12,6 +14,8 @@ lake <- lakes[!is.na(lakes$name_en) & lakes$name_en == "Lake Turkana", ]
   # Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com.
 
 setwd("~/RND/Turkana/maps/workingmaps/data/")
+  # edit as required; .Rdata is stored here
+
 rivers <- readRDS("rivers.Rdata")
 crop.rivers <- rivers %>% filter(long < 36.5) 
   # Africa Rivers. (2014). World Agroforestry Centre. Retrieved from http://landscapeportal.org/layers/geonode:africa_rivers_1
@@ -46,7 +50,7 @@ plot(map.Turkana)
     # set output dimensions to 2x axis length 
 file.w <- round((2 * (extE.TB-extW.TB)), 2)
 file.h <- round((2 * (extN.TB-extS.TB)), 2) - 0.6
-    # export to file linked to .svg 
+    # export to file linked to svg 
 out.folder <- "~/RND/Turkana/maps/workingmaps/images/"
 ggsave(file=paste(out.folder, "TB_regional_sites.tiff", sep=""), plot=map.Turkana, 
        device="tiff", width=file.w, height=file.h, dpi="retina")
@@ -78,6 +82,6 @@ plot(map.EAfrica)
   # save context map as large tiff
 file.w <- 5
 file.h <- 5
-    # export to file linked to .svg 
+    # export to file linked to svg 
 ggsave(file=paste(out.folder, "EA_TBbox_capitals.tiff", sep=""), plot=map.EAfrica, 
        device="tiff", width=file.w, height=file.h, dpi="retina")
