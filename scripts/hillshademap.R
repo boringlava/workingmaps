@@ -1,10 +1,7 @@
 # A script for compiling hillshade data from SRTM into ggplot with sf objects 
 
 ### Libraries and  directory
-pacman::p_load(dplyr, raster, rgdal, rnaturalearth, ggplot2, ggthemes, ggspatial)
-
-setwd("~/RND/Turkana/maps/workingmaps/") 
-  # edit as required; .Rdata is stored here
+pacman::p_load(here, dplyr, raster, rgdal, rnaturalearth, ggplot2, ggthemes, ggspatial)
 
 ### Small Turkana map centered on lake
 extN.TB <- 5
@@ -43,16 +40,16 @@ hill.raster <- rasterToPoints(hill.shrink)
 hill.raster.df <- as.data.frame(hill.raster)
 
 ### Import features 
-srtm.grid <- readRDS("data/SRTMgrid.Rdata")
+srtm.grid <- readRDS(here("data", "SRTMgrid.Rdata"))
   # replaces downloading and stitching SRTM tiles wihout processing hillshade layer 
-hill.raster.df <- readRDS("data/SRTMhillshade_45x300.Rdata")
+hill.raster.df <- readRDS(here("data", "SRTMhillshade_45x300.Rdata"))
   # replaces all steps above for downloading and processing SRTM 
 
-rivers <- readRDS("data/rivers.Rdata")
+rivers <- readRDS(here("data", "rivers.Rdata"))
 crop.rivers <- rivers %>% filter(long < 36.5) 
   # Africa Rivers. (2014). World Agroforestry Centre. Retrieved from http://landscapeportal.org/layers/geonode:africa_rivers_1
   # crop removes river flowing into Chew Bahir 
-Kerio <- readRDS("data/KerioRiver.Rdata")
+Kerio <- readRDS(here("data", "KerioRiver.Rdata"))
   # freehand .kml from Google Earth traced path 
 
 borders.africa <- ne_countries(continent='africa', returnclass="sf")

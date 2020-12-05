@@ -1,5 +1,6 @@
 # A script used to convert large shapefiles to data frames
   # requires: unzipped shapefile folders, downloaded from the sources listed below
+  # here() is not used because map assets are too large for Github
 
 ### Setup
 setwd("~/RND/Turkana/maps/")

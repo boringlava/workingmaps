@@ -1,6 +1,6 @@
 # A script to create site and context maps for AGU 2020 (no hillshade)
 
-pacman::p_load(dplyr, raster, rgdal, rnaturalearth, ggplot2, ggthemes, ggspatial)
+pacman::p_load(here, dplyr, raster, rgdal, rnaturalearth, ggplot2, ggthemes, ggspatial)
 
 ### Add sites and data 
 sites <- data.frame(name = c("Lothagam", "Loperot", "Turkwel", "Ileret", "Koobi Fora"),
@@ -13,10 +13,7 @@ lakes <- ne_download(scale=10, type="lakes", category="physical", returnclass="s
 lake <- lakes[!is.na(lakes$name_en) & lakes$name_en == "Lake Turkana", ]
   # Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com.
 
-setwd("~/RND/Turkana/maps/workingmaps/data/")
-  # edit as required; .Rdata is stored here
-
-rivers <- readRDS("rivers.Rdata")
+rivers <- readRDS(here("data", "rivers.Rdata"))
 crop.rivers <- rivers %>% filter(long < 36.5) 
   # Africa Rivers. (2014). World Agroforestry Centre. Retrieved from http://landscapeportal.org/layers/geonode:africa_rivers_1
   # crop removes river flowing into Chew Bahir 
