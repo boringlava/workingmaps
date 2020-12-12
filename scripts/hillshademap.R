@@ -41,7 +41,7 @@ hill.raster.df <- as.data.frame(hill.raster)
 
 ### Import features 
 srtm.grid <- readRDS(here("data", "SRTMgrid.Rdata"))
-  # replaces downloading and stitching SRTM tiles wihout processing hillshade layer 
+  # replaces downloading and stitching SRTM tiles without processing hillshade layer 
 hill.raster.df <- readRDS(here("data", "SRTMhillshade_45x300.Rdata"))
   # replaces all steps above for downloading and processing SRTM 
 
