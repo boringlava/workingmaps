@@ -5,7 +5,7 @@
 ### Setup
 setwd("~/RND/Turkana/maps/")
 
-pacman::p_load(sf, maptools, raster, rgdal, rgeos)
+pacman::p_load(sf, maptools, raster, rgdal, rgeos, tidyverse)
 
 ### Turkana region boundaries centered on lake
 extN.TB <- 5
@@ -33,6 +33,13 @@ rivers.crop <- crop(rivers.maj, EAfrica)
 rivers.fortify <- fortify(rivers.crop)
 file.name <- "rivers_maj"
 saveRDS(rivers.fortify, file = paste(out.folder, file.name, ".Rdata", sep = ""))
+
+ke.water <- readOGR(dsn="ke_waterbodies/ke_waterbodies.shp")
+ke.water.crop <- crop(ke.water, EAfrica)
+ke.water.fortify <- fortify(ke.water)
+file.name <- "ke_waterbodies"
+saveRDS(ke.water.fortify, file = paste(out.folder, file.name, ".Rdata", sep = ""))
+
 
 #### Unused basemaps ####
 
