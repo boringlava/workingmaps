@@ -54,3 +54,4 @@ file.h <- round((2 * (extN.TB-extS.TB)), 2) - 0.6
 out.folder <- "~/RND/Turkana/maps/workingmaps/images/"
 ggsave(file=paste(out.folder, "TB_TMP_sites.tiff", sep=""), plot=map.Turkana, 
        device="tiff", width=file.w, height=file.h, dpi="retina")
+
